@@ -22,12 +22,13 @@ services:
       - 3001:3001
     platform: linux/x86_64
     working_dir: /app-backend
+    command: npm start
     depends_on:
       db:
         condition: service_healthy
     environment:
       - APP_PORT=3001
-      - JWT_SECRET=jwt_secret
+      - JWT_SECRET=meusupersegredodetoken
       # Os dados abaixo se referem ao container `db`
       # Dica: Relembre aqui da comunicação interna entre containers
       - DB_USER=root
