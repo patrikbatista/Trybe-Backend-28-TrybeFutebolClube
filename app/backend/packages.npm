@@ -1,3 +1,4 @@
 @types/node 
 @types/validator
 @types/bluebird
+express-async-errors
