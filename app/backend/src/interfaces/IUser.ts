@@ -1,7 +1,5 @@
-export default interface IUser{
-  id: number;
-  username: string;
-  role: string;
-  email: string;
+import IUserToken from './IUserToken';
+
+export default interface IUser extends IUserToken{
   password: string;
 }
