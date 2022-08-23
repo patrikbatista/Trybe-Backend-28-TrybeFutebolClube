@@ -2,3 +2,4 @@
 @types/validator
 @types/bluebird
 express-async-errors
+validator
