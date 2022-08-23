@@ -1,7 +1,7 @@
 import * as express from 'express';
 
 class App {
-  public app: express.Express;
+  public app: express.Application;
 
   constructor() {
     this.app = express();
@@ -10,6 +10,10 @@ class App {
 
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
+  }
+
+  public addRouter(router: express.Router) {
+    this.app.use(router);
   }
 
   private config():void {
