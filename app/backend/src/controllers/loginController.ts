@@ -2,21 +2,6 @@ import { Request, Response, NextFunction } from 'express';
 import LoginService from '../services/loginServices';
 import createToken from '../utils/createToken';
 
-const ERROR_INVALID_FIELDS = {
-  status: 400,
-  message: 'All fields must be filled',
-};
-
-const ERROR_USER_NOT_FOUND = {
-  status: 404,
-  message: 'not found',
-};
-
-const ERROR_INVALID_PASSWORD = {
-  status: 400,
-  message: 'invalid password',
-};
-
 export default class LoginController {
   private loginService: LoginService;
 
@@ -25,21 +10,17 @@ export default class LoginController {
     this.create = this.create.bind(this);
   }
 
-  public async create(req: Request, res: Response, next:NextFunction) {
+  public async create(req: Request, res: Response, _next:NextFunction) {
     const { email, password } = req.body;
-
-    if (!email || !password) {
-      return next(ERROR_INVALID_FIELDS);
-    }
 
     const resLogin = await this.loginService.loginUser({ email, password });
 
     if (resLogin === null) {
-      return next(ERROR_USER_NOT_FOUND);
+      return res.status(401).json({ message: 'Incorrect email or password' });
     }
 
     if (resLogin === undefined) {
-      return next(ERROR_INVALID_PASSWORD);
+      return res.status(401).json({ message: 'Incorrect email or password' });
     }
 
     const token = createToken({
@@ -50,5 +31,13 @@ export default class LoginController {
     });
 
     res.status(200).json({ token });
+  }
+
+  public static validatedToken(req: Request, res: Response, _next:NextFunction) {
+    console.log(req.body);
+
+    const { user } = req.body;
+
+    return res.status(200).json({ role: user.role });
   }
 }
