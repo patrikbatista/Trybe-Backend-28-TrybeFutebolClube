@@ -41,7 +41,7 @@ Match.init({
   modelName: 'Match',
 });
 
-Match.hasOne(Team, { foreignKey: 'id', sourceKey: 'homeTeam', as: 'home' });
-Match.hasOne(Team, { foreignKey: 'id', sourceKey: 'awayTeam', as: 'away' });
+Match.hasOne(Team, { foreignKey: 'id', sourceKey: 'homeTeam', as: 'teamHome' });
+Match.hasOne(Team, { foreignKey: 'id', sourceKey: 'awayTeam', as: 'teamAway' });
 
 export default Match;
