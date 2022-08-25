@@ -11,7 +11,17 @@ export default class TeamController {
   }
 
   public async getAll(req: Request, res: Response, _next:NextFunction) {
-    const matches = await this.matchService.getAll();
+    const { inProgress } = req.query;
+    if (!inProgress) {
+      const matches = await this.matchService.getAll();
+      return res.status(200).json(matches);
+    }
+    let progress = false;
+
+    if (inProgress === 'true') {
+      progress = true;
+    }
+    const matches = await this.matchService.getByProgress(progress);
     res.status(200).json(matches);
   }
 
