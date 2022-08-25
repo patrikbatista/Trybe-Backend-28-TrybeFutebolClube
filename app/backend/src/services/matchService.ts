@@ -25,7 +25,36 @@ export default class MatchServices {
   }
 
   public async getById(id: number) : Promise<Match | null> {
-    const match = await this.model.findByPk(id);
+    const match = await this.model.findByPk(id, { include: [
+      {
+        model: Team,
+        as: 'teamHome',
+        attributes: ['teamName'],
+      },
+      {
+        model: Team,
+        as: 'teamAway',
+        attributes: ['teamName'],
+      },
+    ] });
     return match;
+  }
+
+  public async getByProgress(inProgress: boolean) : Promise<Match[]> {
+    const matches = await this.model.findAll({
+      where: { inProgress },
+      include: [
+        {
+          model: Team,
+          as: 'teamHome',
+          attributes: ['teamName'],
+        },
+        {
+          model: Team,
+          as: 'teamAway',
+          attributes: ['teamName'],
+        },
+      ] });
+    return matches;
   }
 }
