@@ -4,4 +4,4 @@ COPY package.json .
 COPY package-lock.json .
 RUN npm install -g npm@latest && npm install
 COPY . .
-# CMD ["npm", "start"]
+CMD ["npm", "start"]
