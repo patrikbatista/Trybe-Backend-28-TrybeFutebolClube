@@ -1,3 +1,4 @@
+import IMatch from '../interfaces/IMatch';
 import Match from '../database/models/match';
 import Team from '../database/models/team';
 
@@ -56,5 +57,32 @@ export default class MatchServices {
         },
       ] });
     return matches;
+  }
+
+  public async createMatch(match:IMatch): Promise<IMatch | null> {
+    const home = await Team.findByPk(match.homeTeam);
+    const away = await Team.findByPk(match.awayTeam);
+
+    if (home && away) {
+      const result = await this.model.create(match);
+      return result;
+    }
+
+    return null;
+  }
+
+  public async updateMatch(match: IMatch): Promise<void> {
+    await this.model.update(
+      {
+        homeTeam: match.homeTeam,
+        homeTeamGoals: match.homeTeamGoals,
+        awayTeam: match.awayTeam,
+        awayTeamGoals: match.awayTeamGoals,
+        inProgress: match.inProgress,
+      },
+      {
+        where: { id: match.id },
+      },
+    );
   }
 }
