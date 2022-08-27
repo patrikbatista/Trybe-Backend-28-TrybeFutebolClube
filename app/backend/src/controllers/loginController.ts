@@ -34,8 +34,6 @@ export default class LoginController {
   }
 
   public static validatedToken(req: Request, res: Response, _next:NextFunction) {
-    console.log(req.body);
-
     const { user } = req.body;
 
     return res.status(200).json({ role: user.role });
