@@ -27,7 +27,7 @@ export default class LoginBodyValidate {
 
     const user = verifyToken(authorization);
     if (!user) {
-      return res.status(401).json({ message: 'Expired or invalid token' });
+      return res.status(401).json({ message: 'Token must be a valid token' });
     }
 
     req.body.user = user;
