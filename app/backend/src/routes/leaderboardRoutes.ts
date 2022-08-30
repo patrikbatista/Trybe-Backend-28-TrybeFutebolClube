@@ -19,11 +19,11 @@ export default class Leaderboard {
   }
 
   public addRoute() {
-    // this.router
-    //   .get(`/${this.endpoint}`, (_req: Request, res: Response) => res.status(200).send('ok'));
+    this.router
+      .get(`/${this.endpoint}`, this.controller.getLeaderboard);
     this.router
       .get(`/${this.endpoint}/home`, this.controller.getLeaderboardHome);
-    // this.router
-    //   .get(`/${this.endpoint}/away`, (_req: Request, res: Response) => res.status(200).send('ok'));
+    this.router
+      .get(`/${this.endpoint}/away`, this.controller.getLeaderboardAway);
   }
 }
