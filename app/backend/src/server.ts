@@ -3,6 +3,7 @@ import 'dotenv/config';
 import UserRouter from './routes/userRoutes';
 import TeamRoutes from './routes/teamRoutes';
 import MatchRoutes from './routes/macthRoutes';
+import LeaderboardRoutes from './routes/leaderboardRoutes';
 
 const PORT = process.env.APP_PORT || 3001;
 
@@ -21,5 +22,9 @@ app.addRouter(teamRoutes.router);
 const macthRoutes = new MatchRoutes('matches');
 macthRoutes.addRoute();
 app.addRouter(macthRoutes.router);
+
+const leaderboardRoutes = new LeaderboardRoutes('leaderboard');
+leaderboardRoutes.addRoute();
+app.addRouter(leaderboardRoutes.router);
 
 app.start(PORT);
