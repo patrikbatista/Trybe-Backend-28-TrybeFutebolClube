@@ -1,2 +1,4 @@
 express-async-errors
 validator
+shelljs
+@types/shelljs
