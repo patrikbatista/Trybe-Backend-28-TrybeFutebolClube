@@ -2,3 +2,4 @@ express-async-errors
 validator
 shelljs
 @types/shelljs
+sinon-chai
