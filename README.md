@@ -4,15 +4,18 @@
 
 ## Tecnologias utilizadas:
 
+<div align="center">
 <img align="center" width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt='icone do Node.js'>
 <img align="center" width="70px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" alt='icone do MySQL'>
 <img align="center" width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg" alt='icone do Sequelize'>
 <img align="center" width="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt='icone do Typescript'>
+</div>
 
 
 ---
 ## Minhas considerações:
-	Para mim esse foi o porjeto mais desafiador do curso até aqui. Nele tive a oportunidade de desenvolver uma aplicação backend completa, totalmente dockerizada, consegui colocar em prática todos os conceitos vistos nesse módulo do curso em especial POO e SOLID, também fui capaz de escrever testes de integração que cobriram 100% da aplicação
+Para mim esse foi o porjeto mais desafiador do curso até aqui. Nele tive a oportunidade de desenvolver uma aplicação backend completa, totalmente dockerizada, consegui colocar em prática todos os conceitos vistos nesse módulo do curso em especial POO e SOLID, também fui capaz de escrever testes de integração que cobriram 100% da aplicação
+
 
 ## Arquitetura:
 MSC: Model, Service e Controller.
@@ -35,6 +38,3 @@ POO - Programação Orientada a Objetos
 * Uso de JWT para geração do token;
 * Uso de bcrypt para criptografar as senhas salvas no banco de dados;
 * Construção de uma tabela de classificação dos times, com filtros e endpoints para os times da casa e times visitantes;
-
-
-
