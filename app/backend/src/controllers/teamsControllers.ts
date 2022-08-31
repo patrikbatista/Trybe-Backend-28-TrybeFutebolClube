@@ -17,13 +17,10 @@ export default class TeamController {
 
   public async getById(req: Request, res: Response, _next:NextFunction) {
     const { id } = req.params;
-    if (id !== undefined) {
-      const team = await this.teamService.getById(Number(id));
-      if (team !== null) {
-        return res.status(200).json(team);
-      }
-      return res.status(404).json({ message: 'Team not found' });
+    const team = await this.teamService.getById(Number(id));
+    if (team !== null) {
+      return res.status(200).json(team);
     }
-    return res.status(401).json({ message: 'id is required' });
+    return res.status(404).json({ message: 'Team not found' });
   }
 }
